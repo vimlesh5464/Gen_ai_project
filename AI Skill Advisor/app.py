@@ -3,11 +3,13 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
 # LLM
-llm = ChatOpenAI(model_name="gpt-4o")  # latest syntax
+api_key = os.getenv("OPENAI_API_KEY")
+llm = ChatOpenAI(model_name="gpt-4o", openai_api_key=api_key)  # latest syntax
 
 # Prompt
 prompt = PromptTemplate.from_template("""
@@ -27,10 +29,13 @@ year = st.text_input("Year", "2025")
 level = st.selectbox("Experience Level", ["Fresher", "Intermediate", "Expert"])
 
 if st.button("Get Skills"):
-    res = chain.invoke({
-        "number": number,
-        "role": role,
-        "year": year,
-        "level": level
-    })
-    st.success(res)
+    try:
+        res = chain.invoke({
+            "number": int(number),
+            "role": role,
+            "year": year,
+            "level": level
+        })
+        st.success(res)
+    except Exception as e:
+        st.error(f"Error: {e}")
