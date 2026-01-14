@@ -13,6 +13,8 @@ venv/
 ENV/
 env/
 *.log
+.env
+*.env
 
 # Streamlit
 .streamlit/
