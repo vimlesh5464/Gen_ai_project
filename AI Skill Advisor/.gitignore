@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.egg-info/
+*.egg
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env/
+*.log
+
+# Streamlit
+.streamlit/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# PyTorch / LangChain caches
+__pycache__/
+*.pt
+*.pth
+
+# Temporary files
+*.tmp
+*.bak
+
+# Mac/Linux hidden files
+*.DS_Store
+*.directory
